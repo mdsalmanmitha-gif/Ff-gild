@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090909">
+  <title>ASSASSIN | Free Fire Guild</title>
+  <style>
+    :root { --red:#ff202b; --red2:#a90012; --bg:#080808; --panel:#151515; --muted:#aaa; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:#fff; background:radial-gradient(ellipse at top,#31060b 0,#0a0809 42%,#050505 100%); font-family:Arial,Helvetica,sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .topbar { position:sticky; top:0; z-index:5; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 5%; background:#080808ed; border-bottom:1px solid var(--red); }
+    .brand { color:var(--red); font-weight:900; letter-spacing:2px; font-size:20px; }
+    nav { display:flex; gap:20px; flex-wrap:wrap; font-size:14px; }
+    nav a:hover { color:var(--red); }
+    .hero { text-align:center; padding:58px 18px 30px; background:linear-gradient(180deg,#3a0009aa,#08080822); }
+    .eyebrow { color:#ff6870; letter-spacing:5px; font-size:12px; font-weight:bold; }
+    h1 { margin:12px 0 4px; font-size:clamp(42px,9vw,88px); line-height:1; font-weight:1000; letter-spacing:3px; text-shadow:0 0 22px #ff001c88; }
+    h1 span { color:var(--red); }
+    .tagline { color:#ddd; letter-spacing:2px; }
+    .stats { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; max-width:900px; margin:28px auto 0; }
+    .stat { border:1px solid var(--red); background:#12090b; padding:14px 8px; border-radius:10px; box-shadow:0 0 14px #ff001c22; }
+    .stat strong { display:block; color:var(--red); font-size:24px; }
+    .stat small { color:#ccc; }
+    main { width:min(1180px,92%); margin:auto; }
+    section { padding:24px 0; }
+    .section-title { text-align:center; margin:12px 0 22px; color:#fff; font-size:25px; }
+    .section-title span { color:var(--red); }
+    .leader-wrap { display:flex; justify-content:center; }
+    .leader-card { width:min(520px,100%); display:flex; align-items:center; gap:18px; padding:18px; border:1px solid var(--red); border-radius:15px; background:linear-gradient(120deg,#28070b,#111); box-shadow:0 0 22px #ff001c33; }
+    .avatar { width:76px; height:76px; flex:0 0 76px; border-radius:50%; display:grid; place-items:center; overflow:hidden; color:#fff; font-size:25px; font-weight:900; background:linear-gradient(135deg,#ff2836,#380008); border:2px solid var(--red); }
+    .avatar img { width:100%; height:100%; object-fit:cover; }
+    .person h3 { margin:0 0 8px; font-size:18px; }
+    .person p { margin:4px 0; color:#c9c9c9; font-size:13px; }
+    .role { color:#ff5b64; font-size:11px; font-weight:bold; letter-spacing:2px; }
+    .grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+    .member { display:flex; align-items:center; gap:11px; min-width:0; padding:12px; background:linear-gradient(135deg,#191919,#0d0d0d); border:1px solid #6d111a; border-radius:11px; }
+    .member .avatar { width:54px; height:54px; flex-basis:54px; font-size:18px; }
+    .member .person { min-width:0; }
+    .member h3 { overflow-wrap:anywhere; font-size:14px; }
+    .member p { font-size:11px; overflow-wrap:anywhere; }
+    footer { text-align:center; padding:25px 12px; margin-top:25px; border-top:1px solid #6d111a; color:#aaa; background:#050505; }
+    footer strong { color:var(--red); }
+    @media(max-width:800px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .stats { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:480px) { .topbar { align-items:flex-start; flex-direction:column; } nav { gap:13px; } .grid { grid-template-columns:1fr; } .leader-card { gap:12px; padding:13px; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">⚔ ASSASSIN</div>
+    <nav>
+      <a href="#home">Home</a><a href="#leader">Leader</a><a href="#officers">Officers</a><a href="#members">Members</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="home">
+    <div class="eyebrow">OFFICIAL FREE FIRE GUILD</div>
+    <h1><span>ASSASSIN</span></h1>
+    <div class="tagline">PLAY TOGETHER • GROW TOGETHER • WIN TOGETHER</div>
+    <div class="stats">
+      <div class="stat"><strong id="totalCount">40</strong><small>Total Players</small></div>
+      <div class="stat"><strong>1</strong><small>Guild Leader</small></div>
+      <div class="stat"><strong>4</strong><small>Officers</small></div>
+      <div class="stat"><strong>40</strong><small>Guild Members</small></div>
+    </div>
+  </div>
+
+  <main>
+    <section id="leader">
+      <h2 class="section-title"><span>♛</span> GUILD LEADER</h2>
+      <div class="leader-wrap" id="leaderCard"></div>
+    </section>
+    <section id="officers">
+      <h2 class="section-title"><span>✦</span> OUR OFFICERS</h2>
+      <div class="grid" id="officerGrid"></div>
+    </section>
+    <section id="members">
+      <h2 class="section-title"><span>✦</span> GUILD MEMBERS</h2>
+      <div class="grid" id="memberGrid"></div>
+    </section>
+  </main>
+  <footer><strong>ASSASSIN GUILD</strong><br>Free Fire • Together We Are Stronger</footer>
+
+  <script>
+    // अपनी जानकारी नीचे बदलें। फोटो बाद में assets फ़ोल्डर में डालकर photo में उसका नाम लिखें।
+    const leader = {
+      name: "YOUR NAME", uid: "ENTER UID", level: "70", likes: "ENTER LIKES", photo: ""
+    };
+
+    const officers = [
+      { name:"OFFICER 1", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"OFFICER 2", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"OFFICER 3", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"OFFICER 4", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" }
+    ];
+
+    // सभी 40 सदस्यों के नाम, UID, Level, Likes और फोटो यहाँ भरें।
+    const members = [
+      { name:"MEMBER 1", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 2", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 3", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 4", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 5", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 6", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 7", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 8", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 9", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 10", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 11", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 12", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 13", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 14", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 15", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 16", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 17", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 18", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 19", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 20", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 21", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 22", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 23", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 24", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 25", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 26", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 27", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 28", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 29", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 30", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 31", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 32", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 33", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 34", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 35", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 36", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 37", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 38", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 39", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" },
+      { name:"MEMBER 40", uid:"ENTER UID", level:"ENTER LEVEL", likes:"ENTER LIKES", photo:"" }
+    ];
+
+    function makeCard(player, role, large=false) {
+      const initials = (player.name || "?").trim().slice(0,2).toUpperCase();
+      const avatar = player.photo
+        ? `<img src="assets/${player.photo}" alt="${escapeHTML(player.name)}" onerror="this.parentElement.textContent='${initials}'">`
+        : initials;
+      return `<article class="${large ? 'leader-card' : 'member'}">
+        <div class="avatar">${avatar}</div>
+        <div class="person">
+          ${role ? `<div class="role">${role}</div>` : ""}
+          <h3>${escapeHTML(player.name)}</h3>
+          <p>UID: ${escapeHTML(player.uid)}</p>
+          <p>Level: ${escapeHTML(player.level)} &nbsp; • &nbsp; Likes: ${escapeHTML(player.likes)}</p>
+        </div>
+      </article>`;
+    }
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+    document.getElementById("leaderCard").innerHTML = makeCard(leader, "GUILD LEADER", true);
+    document.getElementById("officerGrid").innerHTML = officers.map((p,i) => makeCard(p, `OFFICER ${i+1}`)).join("");
+    document.getElementById("memberGrid").innerHTML = members.map((p,i) => makeCard(p, `MEMBER ${i+1}`)).join("");
+    document.getElementById("totalCount").textContent = 1 + officers.length + members.length;
+  </script>
+</body>
+</html>
